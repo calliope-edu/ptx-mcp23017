@@ -6,19 +6,31 @@
 
 namespace mcp23017 {
 
+
     const ADDRESS = 0x20;
     const GPIO_A = 0x12;
     const GPIO_B = 0x13;
     const MCP23017_IODIRA = 0x00;
     const MCP23017_IODIRB = 0x01;
 
-
+    /**
+     * Initialize mcp23017 module.
+     */
+    //% weight=210
+    //% blockId=mcp23017_init block="initialize mcp23017 chip"
+    //% blockExternalInputs=1
+    //% parts="mcp23017"
     export function init(): void {
         // set all pins on both registers to output
         write_reg(MCP23017_IODIRA, 0x00)
         write_reg(MCP23017_IODIRB, 0x00)
     }
-
+    /**
+     * Write digital value to pin
+     */
+    //% weight=209
+    //% blockId=mcp23017_digitalWrite block="write digital value to pin"
+    //% parts="mcp23017"
     export function digitalWrite(pin: number, state: string): void {
         let reg = regOfPin(pin, GPIO_A, GPIO_B)
         let state_bool = state == 'HIGH' ? 1 : 0
@@ -26,7 +38,12 @@ namespace mcp23017 {
         bitWrite(reg, bit, state_bool)
     }
     
-
+    /**
+     * Read digital value from pin
+     */
+    //% weight=208
+    //% blockId=mcp23017_digitalRead block="read digital value from pin"
+    //% parts="mcp23017"
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, GPIO_A, GPIO_B)
         let bit = bitOfPin(pin)
