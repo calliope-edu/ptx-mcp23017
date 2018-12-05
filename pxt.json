@@ -1,0 +1,19 @@
+{
+    "name": "pxt-GPIO-board",
+    "version": "0.0.1",
+    "description": "I2C GPIO expansion board",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "mcp23017.ts",
+        "_locales/de/ptx-GPIO-board-jsdoc-strings.json",
+        "_locales/de/ptx-GPIO-board-strings.json"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Moritzheine/ptx-GPIO-board.git"
+    },
+    "public": false
+}

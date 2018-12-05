@@ -1,0 +1,5 @@
+{
+  "mcp23017.init": "Initialisiere mcp23017 chip",
+  "mcp23017.digitalWrite": "Schreibe digitalen wert zu pin",
+  "mcp23017.digitalRead": "Lese digitalen wert von pin"
+}
