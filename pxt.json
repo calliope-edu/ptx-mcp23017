@@ -7,9 +7,7 @@
         "core": "*"
     },
     "files": [
-        "mcp23017.ts",
-        "_locales/de/ptx-GPIO-board-jsdoc-strings.json",
-        "_locales/de/ptx-GPIO-board-strings.json"
+        "mcp23017.ts"
     ],
     "repository": {
         "type": "git",
