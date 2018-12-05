@@ -1,6 +1,0 @@
-{
-  "mcp23017.init|block": "Initialisiere den mcp23017 chip",
-  "mcp23017.digitalWrite|block": "Schreibe digitale Werte",
-  "mcp23017.digitalRead|block": "Lese digitale Werte",
-  "{id:category}mcp23017": "mcp23017"
-}

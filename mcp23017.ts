@@ -1,15 +1,16 @@
 /**
- * Functions for the mcp23017 IO expander with the calliope mini
+ * Functions for the mcp23017 IO expander with the Calliope mini
  *
  * @author Moritz Heine
  */
 
+//% weight=2 color=#1174EE block="Mcp23017 IO expander"
+//% parts="mcp23017"
 namespace mcp23017 {
 
-
     const ADDRESS = 0x20;
-    const GPIO_A = 0x12;
-    const GPIO_B = 0x13;
+    const MCP23017_GPIO_A = 0x12;
+    const MCP23017_GPIO_B = 0x13;
     const MCP23017_IODIRA = 0x00;
     const MCP23017_IODIRB = 0x01;
 
@@ -21,23 +22,26 @@ namespace mcp23017 {
     //% blockExternalInputs=1
     //% parts="mcp23017"
     export function init(): void {
-        // set all pins on both registers to output
-        write_reg(MCP23017_IODIRA, 0x00)
-        write_reg(MCP23017_IODIRB, 0x00)
+        // set all pins on both registers to input
+        write_reg(MCP23017_IODIRA, 0xff)
+        write_reg(MCP23017_IODIRB, 0xff)
     }
+
     /**
      * Write digital value to pin
      */
-    //% weight=209
-    //% blockId=mcp23017_digitalWrite block="write digital value to pin"
+    //% blockId=mcp23017_digitalWrite block="digitalWrite(pin: %pin , %state)"
     //% parts="mcp23017"
-    export function digitalWrite(pin: number, state: string): void {
-        let reg = regOfPin(pin, GPIO_A, GPIO_B)
-        let state_bool = state == 'HIGH' ? 1 : 0
+    //% weight=209
+    //% state.min=0 state.max=1
+    export function digitalWrite(pin: number = 0, state: number = 0): void {
+        let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
-        bitWrite(reg, bit, state_bool)
+        let io_reg = regOfPin(pin,MCP23017_IODIRA,MCP23017_IODIRB)
+        bitWrite(io_reg,bit,0)
+        bitWrite(reg, bit, state)
     }
-    
+
     /**
      * Read digital value from pin
      */
@@ -45,7 +49,7 @@ namespace mcp23017 {
     //% blockId=mcp23017_digitalRead block="read digital value from pin"
     //% parts="mcp23017"
     export function digitalRead(pin: number): number {
-        let reg = regOfPin(pin, GPIO_A, GPIO_B)
+        let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
         return bitRead(reg, bit)
     }
@@ -58,7 +62,7 @@ namespace mcp23017 {
         let bits = readRegister(regAddr)
         if (((bits >> bit) & 0x1) != value) {
             // if bit not in desired state flip it
-            write_reg(regAddr, (bits ^ (2 << (bit - 1))))
+            write_reg(regAddr, bits ^ (1 << bit))
         }
     }
 
@@ -79,5 +83,4 @@ namespace mcp23017 {
         pins.i2cWriteNumber(ADDRESS, reg, NumberFormat.UInt8BE)
         return pins.i2cReadNumber(ADDRESS, NumberFormat.UInt8BE)
     }
-
 }
