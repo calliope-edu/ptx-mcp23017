@@ -5,7 +5,6 @@
  */
 
 //% weight=2 color=#1174EE block="mcp23017 IO expander"
-//% parts="mcp23017"
 namespace mcp23017 {
 
     let ADDRESS = 0x20;
@@ -25,12 +24,10 @@ namespace mcp23017 {
     /**
      * Write digital value to pin
      */
-    //% blockId=digitalWrite 
     //% block="write digital value of pin %pin to %state "
     //% weight=210
     //% pin.min=0 pin.max=15
     //% state.min=0 state.max=1
-    //% parts="mcp23017"
     export function digitalWrite(pin: number = 0, state: number = 0): void {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
@@ -46,7 +43,6 @@ namespace mcp23017 {
     //% blockId=digitalRead
     //% block="read digital value of pin %pin"
     //% pin.min=0 pin.max=15
-    //% parts="mcp23017"
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)

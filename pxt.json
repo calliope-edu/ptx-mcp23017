@@ -7,9 +7,7 @@
         "core": "*"
     },
     "files": [
-        "mcp23017.ts",
-        "_locales/de/pxt-mcp23017-jsdoc-strings.json",
-        "_locales/de/pxt-mcp23017-strings.json"
+        "mcp23017.ts"
     ],
     "repository": {
         "type": "git",
