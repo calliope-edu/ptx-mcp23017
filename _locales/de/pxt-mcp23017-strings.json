@@ -1,4 +1,5 @@
 {
-  "mcp23017.digitalWrite|block": "schreibe digitalen Wert von pin %pin auf %state)",
-  "mcp23017.digitalRead|block": "lese digitalen Wert von pin %pin"
+  "mcp23017.digitalWrite|block": "schreibe digitalen Wert von pin %pin auf %state",
+  "mcp23017.digitalRead|block": "lese digitalen Wert von pin %pin",
+  "{id:category}mcp23017": "mcp23017"
 }
