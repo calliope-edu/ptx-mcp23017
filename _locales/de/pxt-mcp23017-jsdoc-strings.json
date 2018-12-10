@@ -1,0 +1,4 @@
+{
+  "mcp23017.digitalWrite": "schreibe digitalen Wert",
+  "mcp23017.digitalRead": "lese digitalen Wert"
+}
