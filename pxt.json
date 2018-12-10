@@ -7,11 +7,13 @@
         "core": "*"
     },
     "files": [
-        "mcp23017.ts"
+        "mcp23017.ts",
+        "_locales/de/pxt-mcp23017-jsdoc-strings.json",
+        "_locales/de/pxt-mcp23017-strings.json"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Moritzheine/ptx-GPIO-board.git"
+        "url": "git+https://github.com/Moritzheine/ptx-mcp23017"
     },
     "public": false
 }
