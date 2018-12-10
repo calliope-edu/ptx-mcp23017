@@ -4,8 +4,6 @@
  * @author Moritz Heine
  */
 
-//% weight=2 color=#1174EE block="Mcp23017 IO expander"
-//% parts="mcp23017"
 namespace mcp23017 {
 
     const ADDRESS = 0x20;
@@ -17,10 +15,6 @@ namespace mcp23017 {
     /**
      * Initialize mcp23017 module.
      */
-    //% weight=210
-    //% blockId=mcp23017_init block="initialize mcp23017 chip"
-    //% blockExternalInputs=1
-    //% parts="mcp23017"
     export function init(): void {
         // set all pins on both registers to input
         write_reg(MCP23017_IODIRA, 0xff)
@@ -30,10 +24,6 @@ namespace mcp23017 {
     /**
      * Write digital value to pin
      */
-    //% blockId=mcp23017_digitalWrite block="digitalWrite(pin: %pin , %state)"
-    //% parts="mcp23017"
-    //% weight=209
-    //% state.min=0 state.max=1
     export function digitalWrite(pin: number = 0, state: number = 0): void {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
@@ -45,9 +35,6 @@ namespace mcp23017 {
     /**
      * Read digital value from pin
      */
-    //% weight=208
-    //% blockId=mcp23017_digitalRead block="read digital value from pin"
-    //% parts="mcp23017"
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
