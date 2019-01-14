@@ -4,8 +4,8 @@
  * @author Moritz Heine
  */
 
-//% weight=2 color=#1174EE block="mcp23017 IO expander"
-//% parts="mcp23017"
+//% weight=2 color=#1174EE 
+//% block="mcp23017 IO expander"
 namespace mcp23017 {
 
     let ADDRESS = 0x20;
@@ -18,17 +18,15 @@ namespace mcp23017 {
      * Set custom i2c address
      * only necessary if multiple chips are used
      */
-    export function i2c_address(i2c_addr: number): void {
+    export function i2c_address(i2c_addr: number = 0): void {
         ADDRESS = 0x20 + i2c_addr
     }
 
     /**
-     * Write digital value to pin
+     * Write digital value to pinq
      */
     //% block="write digital value of pin %pin to %state "
-    //% blockId=digitalRead
     //% weight=210
-    //% parts="mcp23017"
     export function digitalWrite(pin: number = 0, state: number = 0): void {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
@@ -42,7 +40,6 @@ namespace mcp23017 {
      */
     //% weight=209
     //% block="read digital value of pin %pin"
-    //% blockId=digitalRead
     //% parts="mcp23017"
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
@@ -57,7 +54,6 @@ namespace mcp23017 {
     function bitWrite(regAddr: number, bit: number, value: number) {
         let bits = readRegister(regAddr)
         if (((bits >> bit) & 0x1) != value) {
-            // if bit not in desired state flip it
             write_reg(regAddr, bits ^ (1 << bit))
         }
     }
