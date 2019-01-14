@@ -38,6 +38,7 @@ namespace mcp23017 {
      */
     //% weight=209
     //% block="read digital value of pin %pin"
+    //% blockId=digitalRead
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
@@ -45,6 +46,7 @@ namespace mcp23017 {
     }
     //% weight=208
     //% block="set i2c address to | %i2c_addr"
+    //% blockId=i2c_address
     export function i2c_address(i2c_addr: number = 0): void {
         ADDRESS = 0x20 + i2c_addr
     }
