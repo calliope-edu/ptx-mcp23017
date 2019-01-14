@@ -5,7 +5,6 @@
  */
 
 //% weight=2 color=#1174EE block="mcp23017 IO expander"
-//% parts="mcp23017"
 namespace mcp23017 {
 
     let ADDRESS = 0x20;
