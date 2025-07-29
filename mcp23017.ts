@@ -4,7 +4,7 @@
  * @author Moritz Heine
  */
 
-//% weight=2 color=#7F0000 block="mcp23017 IO expander"
+//% weight=2 color=#7F0000 block="IO expander" block.loc.de="IO-Expander"
 namespace mcp23017 {
     let ADDRESS = 0x20;
     const MCP23017_GPIO_A = 0x12;
@@ -16,7 +16,8 @@ namespace mcp23017 {
      * Write digital value to pin
      */
     //% blockId=digitalWrite
-    //% block="digitalWrite(%pin|, %state|)"
+    //% block="digitalWrite(Pin %pin|, Value %state|)"
+    //% block.loc.de="digitalen Wert schreiben (Pin %pin|, Wert %state|)"
     export function digitalWrite(pin: number, state: number): void {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
         let bit = bitOfPin(pin)
@@ -28,7 +29,8 @@ namespace mcp23017 {
     /**
      * Read digital value from pin
      */
-    //% block="digitalRead(%pin|)"
+    //% block="digitalRead (Pin %pin|)"
+    //% block.loc.de="digitalen Wert lesen (Pin %pin|)"
     //% blockId=digitalRead
     export function digitalRead(pin: number): number {
         let reg = regOfPin(pin, MCP23017_GPIO_A, MCP23017_GPIO_B)
@@ -40,7 +42,8 @@ namespace mcp23017 {
      * Set custom i2c address
      * only necessary if multiple chips are used
      */
-    //% block="set i2c address to %i2c_addr"
+    //% block="set I²C-address to %i2c_addr (if multiple chips are used)"
+    //% block="setze I²C-Adresse auf %i2c_addr (bei mehreren IO-Extendern nötig)"
     //% blockId=i2c_address
     export function i2c_address(i2c_addr: number = 0): void {
         ADDRESS = 0x20 + i2c_addr
