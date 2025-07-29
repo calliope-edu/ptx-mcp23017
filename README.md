@@ -14,8 +14,8 @@ Anwendungen:
 Ideal, wenn mehr digitale Pins benötigt werden, z. B. für Taster, LEDs, Relais oder Sensoren.
 
 # MakeCode-Erweiterung
-In der Erweiterung muss zuerst die I²C-Adresse definiert werden.
-Nun kann entweder ein digitaler Pin ausgelesen oder beschrieben werden.
+Es kann entweder ein digitaler Pin ausgelesen oder beschrieben werden.
+In der Erweiterung muss zuerst die I²C-Adresse definiert werden, wenn mehrere I/O-Portexpander genutzt werden.
 
 
 
@@ -39,7 +39,7 @@ Ideal when additional digital pins are needed, e.g., for buttons, LEDs, relays, 
 
 # MakeCode Extension
 
-In the extension, the I²C address must be defined first.  
+In the extension, the I²C address must be defined first (at least if you are using more than one).  
 After that, digital pins can either be read from or written to.
 
 
